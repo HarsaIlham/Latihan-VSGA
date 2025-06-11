@@ -79,7 +79,6 @@ class _MapGudangState extends State<MapGudang> {
                       ),
                       MarkerLayer(
                         markers: [
-                          // Marker Lokasi Saat Ini
                           Marker(
                             point: _lokasiSaatIni!,
                             width: 80,
@@ -90,7 +89,6 @@ class _MapGudangState extends State<MapGudang> {
                               size: 30,
                             ),
                           ),
-                          // Marker Lokasi Gudang
                           Marker(
                             point: _lokasiGudang,
                             width: 80,
