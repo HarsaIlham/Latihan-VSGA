@@ -38,7 +38,6 @@ class _RuangSenjataState extends State<RuangSenjata> {
     if (!_validateForm()) return;
 
     if (_editingWeapon != null) {
-      // Update existing weapon
       await DbHelper.updateSenjata(
         Senjata(
           id: _editingWeapon!.id,
@@ -63,7 +62,6 @@ class _RuangSenjataState extends State<RuangSenjata> {
     ).showSnackBar(SnackBar(content: Text('Data senjata berhasil disimpan')));
   }
 
-  // Delete weapon (mirip _deleteTodo di referensi)
   Future<void> _deleteWeapon(int id) async {
     bool confirm = await _showDeleteConfirmDialog();
     if (confirm) {
@@ -75,7 +73,6 @@ class _RuangSenjataState extends State<RuangSenjata> {
     }
   }
 
-  // Edit weapon (mirip _editTodo di referensi)
   void _editWeapon(Senjata weapon) {
     setState(() {
       _nameController.text = weapon.nama;
@@ -146,7 +143,6 @@ class _RuangSenjataState extends State<RuangSenjata> {
         padding: EdgeInsets.all(16),
         child: Column(
           children: [
-            // Form Input Section
             Card(
               elevation: 4,
               child: Padding(
