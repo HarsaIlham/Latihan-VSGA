@@ -35,6 +35,7 @@ class _AccelerometerState extends State<Accelerometer> {
     _subAcc = accelerometerEventStream(
       samplingPeriod: Duration(milliseconds: 100),
     ).listen((event) {
+      if (!mounted) return;
       setState(() {
         _x = event.x;
         _y = event.y;
@@ -61,14 +62,14 @@ class _AccelerometerState extends State<Accelerometer> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
+          children: [
             Text('X: $_x', style: const TextStyle(fontSize: 24)),
             Text('Y: $_y', style: const TextStyle(fontSize: 24)),
             Text('Z: $_z', style: const TextStyle(fontSize: 24)),
             SizedBox(height: 20),
             ElevatedButton(
               onPressed: _listenAcc,
-              child: Text('Baca Sensor', style: TextStyle(color: Colors.white),),
+              child: Text('Baca Sensor', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.brown[700],
               ),

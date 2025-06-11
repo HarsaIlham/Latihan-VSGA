@@ -21,7 +21,6 @@ class DbHelper {
     await db.execute('CREATE TABLE Senjatas(id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT, jumlah INTEGER)');
   }
 
-  // CRUD Operations
   static Future<int> insertSenjata(Senjata senjata) async {
     final db = await database;
     return await db.insert('Senjatas', senjata.toMap());

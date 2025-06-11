@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:latihan_vsga/view/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {

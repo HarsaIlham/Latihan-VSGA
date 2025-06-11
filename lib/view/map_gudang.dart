@@ -18,16 +18,12 @@ class _MapGudangState extends State<MapGudang> {
   bool _isLoading = true;
   String? _errorMessage;
 
-  List<LatLng> _rute = [];
-  double _jarak = 0.0;
-  String _durasi = '';
-  bool _showRute = false;
-
   @override
   void initState() {
     super.initState();
     _getLokasiSaatIni();
   }
+
   Future<void> _getLokasiSaatIni() async {
     PermissionStatus status = await Permission.location.request();
     if (status.isGranted) {
@@ -73,7 +69,8 @@ class _MapGudangState extends State<MapGudang> {
                   FlutterMap(
                     options: MapOptions(
                       initialCenter: _lokasiSaatIni!,
-                      initialZoom: 13.0,),
+                      initialZoom: 13.0,
+                    ),
                     children: [
                       TileLayer(
                         urlTemplate:
@@ -98,8 +95,8 @@ class _MapGudangState extends State<MapGudang> {
                             point: _lokasiGudang,
                             width: 80,
                             height: 80,
-                            child: Icon(
-                              Icons.store,
+                            child: const Icon(
+                              Icons.warehouse,
                               color: Colors.red,
                               size: 30,
                             ),
@@ -107,6 +104,44 @@ class _MapGudangState extends State<MapGudang> {
                         ],
                       ),
                     ],
+                  ),
+                  Positioned(
+                    bottom: MediaQuery.of(context).padding.bottom + 16,
+                    right: MediaQuery.of(context).padding.right + 16,
+                    child: Container(
+                      padding: const EdgeInsets.all(8),
+                      decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.9),
+                        borderRadius: BorderRadius.circular(8),
+                        boxShadow: [
+                          BoxShadow(color: Colors.black26, blurRadius: 4),
+                        ],
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: const [
+                          Row(
+                            children: [
+                              Icon(
+                                Icons.location_on,
+                                color: Colors.blue,
+                                size: 20,
+                              ),
+                              SizedBox(width: 6),
+                              Text('Lokasi Saat Ini'),
+                            ],
+                          ),
+                          SizedBox(height: 4),
+                          Row(
+                            children: [
+                              Icon(Icons.warehouse, color: Colors.red, size: 20),
+                              SizedBox(width: 6),
+                              Text('Lokasi Gudang'),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
